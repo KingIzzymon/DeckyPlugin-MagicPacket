@@ -37,9 +37,9 @@ Note: Always search for dev comments (#dev), todo comments (#todo), and work-in-
 
 ### Dev Resources
 
-[Plugin-dev Wiki](https://wiki.deckbrew.xyz/en/plugin-dev/getting-started)
-[Template Readme](https://github.com/SteamDeckHomebrew/decky-plugin-template/blob/main/README.md)
-[Database Readme](https://github.com/SteamDeckHomebrew/decky-plugin-database/blob/main/README.md)
+- [Plugin-dev Wiki](https://wiki.deckbrew.xyz/en/plugin-dev/getting-started)
+- [Template Readme](https://github.com/SteamDeckHomebrew/decky-plugin-template/blob/main/README.md)
+- [Database Readme](https://github.com/SteamDeckHomebrew/decky-plugin-database/blob/main/README.md)
 
 ---
 
