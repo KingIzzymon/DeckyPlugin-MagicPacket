@@ -1,12 +1,12 @@
 # SteamDeckPlugin-MagicPacket
 
-A wake-on-lan and sleep-on-lan feature for the Steam Deck
+A [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that will wake/sleep a remote computer (aka desktop gaming rig).
 
 ---
 
 ## Goals
 
-The goal of this project is to create a simple button, accessible via [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader), that will display "Wake" or "Sleep" depending on the remote computer's status.
+The goal of this project is to create a simple button, accessible via Decky Loader, that will display "Wake" or "Sleep" depending on the remote computer's status.
 
 It will also have a configurator, thanks to [Scawp](https://github.com/scawp/Steam-Deck.Wake-Up-Rig), that will scan your network for running systems where you can initially select your default connection.
 
