@@ -17,7 +17,7 @@ More connections will be supported via the plugin's settings menu where the user
 A server application, provided by [SR-G](https://github.com/SR-G/sleep-on-lan), is required on the remote computer to listen for the wake signal.
 
 1) Grab the latest release [here](https://github.com/SR-G/sleep-on-lan/releases)
-2) Right click and download our modified "[sol.json](https://raw.githubusercontent.com/KingIzzymon/SteamDeckPlugin-MagicPacket/main/sol.json)" file
+2) Right click and download our modified "[sol.json](https://raw.githubusercontent.com/KingIzzymon/DeckyPlugin-MagicPacket/main/defaults/sol.json)" file
 3) Copy and overwrite the prepackaged json file
 4) Run "sol.exe" to start the server
 
