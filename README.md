@@ -24,10 +24,17 @@ More connections will be supported via the plugin's settings menu where the user
 
 A server application, provided by [SR-G](https://github.com/SR-G/sleep-on-lan), is required on the remote computer to listen for the wake signal.
 
-1) Grab the latest release [here](https://github.com/SR-G/sleep-on-lan/releases)
-2) Right click and download our modified "[sol.json](https://raw.githubusercontent.com/KingIzzymon/DeckyPlugin-MagicPacket/main/defaults/sol.json)" file
-3) Copy and overwrite the prepackaged json file
-4) Run "sol.exe" to start the server
+1) Copy the "server" folder from your steam deck to your server PC.
+
+```sh
+$HOME/homebrew/plugins/MagicPacket/server
+```
+
+2) Run "sol.exe" to start the server
+3) MagicPacket cannot unlock your PC remotely. The easiest solution is to disable password login when you plan on remote play. Just keep in mind that this is a **security risk** since anyone can walk up and access the PC.
+4) (Optional) Create a shortcut to the executable and place it in your startup folder so it runs on startup
+
+- Press the Windows logo key + R, then type `shell:startup` and hit enter
 
 ---
 
@@ -35,11 +42,10 @@ A server application, provided by [SR-G](https://github.com/SR-G/sleep-on-lan), 
 
 ### ToDo
 
+- [ ] Connect the button to launch the bash scripts
+- [ ] Make bashscripts executable during install
 - [ ] Add "hostname" to configurator
-- [ ] Create function to reverse set mac address and create alternate config variable
-- [ ] Create config file editor function
-- [ ] Read/display remote computer status
-- [ ] Rework "Wake.sh" to receive the forward mac or reverse mac address from config based on computer status
+- [ ] Add multi-computer functionality
 
 Note: Always search for dev comments (#dev), todo comments (#todo), and work-in-progress (#wip) can can be cleared before committing
 

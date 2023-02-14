@@ -1,22 +1,24 @@
-import logging
+import subprocess
+import pathlib
+import time
 
-logging.basicConfig(filename="/tmp/template.log",
-                    format='[Template] %(asctime)s %(levelname)s %(message)s',
-                    filemode='w+',
-                    force=True)
-logger=logging.getLogger()
-logger.setLevel(logging.INFO) # can be changed to logging.DEBUG for debugging issues
+PLUGIN_DIR = str(pathlib.Path(__file__).parent.resolve())
+PLUGIN_BIN_DIR = str(PLUGIN_DIR + "/bin")
+
+# Make scripts executable
+subprocess.run("chmod +x *.sh", cwd=PLUGIN_BIN_DIR)
 
 class Plugin:
-    # A normal method. It can be called from JavaScript using call_plugin_function("method_1", argument1, argument2)
-    async def add(self, left, right):
-        return left + right
-
-    # Asyncio-compatible long-running code, executed in a task when the plugin is loaded
-    async def _main(self):
-        logger.info("Hello World!")
+    # If asleep, then wake. Else iff awake, then sleep
+    async def sendpacket(self):
+        subprocess.run("./sendpacket.sh", cwd=PLUGIN_BIN_DIR)
     
-    # Function called first during the unload process, utilize this to handle your plugin being removed
-    async def _unload(self):
-        logger.info("Goodbye World!")
-        pass
+    # Launch configurator
+    async def configurator(self):
+        subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR)
+
+    # Update status of server PC in config every 5 seconds
+    async def _main(self):
+        while(True):
+            subprocess.run("./statuscheck.sh", cwd=PLUGIN_BIN_DIR)
+            time.sleep(5)

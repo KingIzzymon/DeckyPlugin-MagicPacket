@@ -1,10 +1,10 @@
 {
-  "name": "Example Plugin",
-  "author": "John Doe",
-  "flags": ["debug", "_root"],
+  "name": "MagicPacket",
+  "author": "KingIzzymon",
+  "flags": ["debug"],
   "publish": {
-    "tags": ["template", "root"],
-    "description": "Decky example plugin.",
-    "image": "https://opengraph.githubassets.com/1/SteamDeckHomebrew/PluginLoader"
+    "tags": ["wake-on-lan", "streaming", "utility"],
+    "description": "MagicPacket can wake/sleep a remote computer (aka desktop gaming rig). This is intended for use with Steam's Remote Play and with applications like Parsec for in home game streaming.",
+    "image": ""
   }
 }
