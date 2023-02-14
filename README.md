@@ -25,7 +25,7 @@ A server application, provided by [SR-G](https://github.com/SR-G/sleep-on-lan), 
 
 ## Development
 
-### Todo
+### ToDo
 
 - [ ] Add "hostname" to configurator
 - [ ] Create function to reverse set mac address and create alternate config variable
