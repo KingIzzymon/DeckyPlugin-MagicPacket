@@ -1,6 +1,6 @@
 # SteamDeckPlugin-MagicPacket
 
-A [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that will wake/sleep a remote computer (aka desktop gaming rig).
+MagicPacket is a [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that will wake/sleep a remote computer (aka desktop gaming rig). This is intended for use with Steam's Remote Play and with applications like [Parsec](https://parsec.app/) for in home game streaming.
 
 ---
 
@@ -8,9 +8,17 @@ A [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that 
 
 The goal of this project is to create a simple button, accessible via Decky Loader, that will display "Wake" or "Sleep" depending on the remote computer's status.
 
-It will also have a configurator, thanks to [Scawp](https://github.com/scawp/Steam-Deck.Wake-Up-Rig), that will scan your network for running systems where you can initially select your default connection.
+It will also have a configurator, thanks to [Scawp](https://github.com/scawp/Steam-Deck.Wake-Up-Rig), that will scan your network for running systems where you can initially select and setup the first connection.
 
-More connections will be supported via the plugin's settings menu where the user can run the configurator again, create other connections and change the default.
+More connections will be supported via the plugin's settings menu where the user can run the configurator again, create other connections and select which connections to show in the Decky plugin menu.
+
+---
+
+## Installation
+
+1) [Install Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader#installation)
+2) In Decky Settings, set the "Store Channel" to "Testing" <- **Not yet implemented**
+3) Search the Decky Store for the "MagicPacket" plugin and click "Install"
 
 ## Server Setup
 
