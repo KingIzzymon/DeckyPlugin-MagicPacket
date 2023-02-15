@@ -1,38 +1,37 @@
-import sys
 import os
-import pathlib
+import sys
 import logging
 import subprocess
 import time
 
-# Append py_modules to PYTHONPATH
-sys.path.append(os.path.dirname(os.path.realpath(__file__))+"/py_modules")
+#sys.path.append(os.path.dirname(__file__))
 
-PLUGIN_DIR = str(pathlib.Path(__file__).parent.resolve())
-PLUGIN_BIN_DIR = str(PLUGIN_DIR+"/bin")
-
-logging.basicConfig(filename=PLUGIN_BIN_DIR+"/log.log",
+logging.basicConfig(filename=os.getenv('DECKY_PLUGIN_LOG_DIR') + "/log.txt",
                     format='[MagicPacket] %(asctime)s %(levelname)s %(message)s',
                     filemode='w+',
                     force=True)
 logger=logging.getLogger()
-logger.setLevel(logging.DEBUG) # Can be changed to logging.DEBUG for debugging issues
+logger.setLevel(logging.DEBUG) # Options: logging.INFO, logging.DEBUG
+logger.info("Starting " + os.environ.get('DECKY_PLUGIN_NAME'))
+logger.info("MagicPacket Version: " + os.environ.get('DECKY_PLUGIN_VERSION'))
+logger.info("Decky Version: " + os.environ.get('DECKY_VERSION'))
+logger.info("Settings Directory: " + os.environ.get('DECKY_PLUGIN_SETTINGS_DIR'))
 
-# Make scripts executable
-subprocess.run("chmod +x *.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+SETTINGSFILE = str(os.environ.get('DECKY_PLUGIN_SETTINGS_DIR') + "/settings.json")
+PLUGIN_BIN_DIR = str(os.environ.get('DECKY_PLUGIN_DIR') + "/bin")
+
+subprocess.run("chmod +x ./*.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+logger.debug("Made bash scripts executable")
 
 class Plugin:
-    # If asleep, then wake. Else iff awake, then sleep
     async def sendpacket(self):
         logger.debug("Called 'sendpacket'")
-        subprocess.run("./sendpacket.sh", shell=True)
+        #subprocess.run("./sendpacket.sh", cwd=PLUGIN_BIN_DIR, shell=True)
     
-    # Launch configurator
     async def configurator(self):
         logger.debug("Called 'configurator'")
-        subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+        #subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
 
-    # Update status of server PC in config every 5 seconds
     async def _main(self):
         while(True):
             logger.debug("Called 'statuscheck'")

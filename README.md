@@ -43,6 +43,9 @@ $HOME/homebrew/plugins/MagicPacket/server
 ### ToDo
 
 - [ ] Connect the button to launch the bash scripts
+- [ ] Display server IP and MAC under button
+- [ ] Adding "Settings" menu
+- [ ] Add authentication support for sol
 - [ ] Add "hostname" to configurator
 - [ ] Add multi-computer functionality
 
@@ -59,6 +62,18 @@ Plugin Stores
 - [Official/Stable](https://plugins.deckbrew.xyz/)
 - [Beta](https://beta.deckbrew.xyz/)
 - [Testing](https://testing.deckbrew.xyz/)
+
+### Testing / Trouble Shotting
+
+#### Viewing frontend logs
+
+1) On the Steam Deck, go to the Decky Loader settings and enable "Allow Remote CEF Debugging"
+2) Open Chrome and go to `chrome://inspect`
+3) On the "Devices" page, click "Configure" and add `your-steam-deck-IP:8081`
+4) Look for "Steam Shared Context" and click "inspect"
+5) The "Console" logs will be in the bottom right corner
+
+Search for "index.js" entries as that will most likely be the Decky plugins
 
 ---
 
