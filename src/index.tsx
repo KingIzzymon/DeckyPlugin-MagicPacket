@@ -4,7 +4,7 @@ import {
   PanelSection,
   PanelSectionRow,
   ServerAPI,
-  staticClasses,
+  staticClasses
 } from "decky-frontend-lib";
 import { VFC } from "react";
 import { FaWifi } from "react-icons/fa";
@@ -18,19 +18,17 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({}) => {
         <ButtonItem
           layout="below"
           onClick={async () => {
-            backend.sendpacket()
-          }
-        }
-        >
+            await backend.sendpacket()
+          }}
+          >
           Wake / Sleep
         </ButtonItem>
         <ButtonItem
           layout="below"
           onClick={async () => {
-            backend.configurator()
-          }
-        }
-        >
+            await backend.configurator()
+          }}
+          >
           Configurator
         </ButtonItem>
       </PanelSectionRow>
@@ -40,10 +38,10 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({}) => {
 
 export default definePlugin((serverApi: ServerAPI) => {
   backend.setServerAPI(serverApi);
-
   return {
     title: <div className={staticClasses.Title}>MagicPacket</div>,
     content: <Content serverAPI={serverApi} />,
-    icon: <FaWifi />
+    icon: <FaWifi />,
+    alwaysRender: true
   };
 });

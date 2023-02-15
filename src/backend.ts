@@ -1,21 +1,18 @@
-import {
-    ServerAPI
-} from "decky-frontend-lib"
+import { ServerAPI } from "decky-frontend-lib";
 
 var serverAPI: ServerAPI | undefined = undefined;
-  
+
 export function setServerAPI(s: ServerAPI) {
     serverAPI = s;
 }
   
 async function backend_call<I, O>(name: string, params: I): Promise<O> {
     try {
-        const result = await serverAPI!.callPluginMethod<I, O>(name, params);
-        if (result.success)
-            return result.result;
+        const res = await serverAPI!.callPluginMethod<I, O>(name, params);
+        if (res.success) return res.result;
         else {
-            console.error(result.result);
-            throw result.result;
+            console.error(res.result);
+            throw res.result;
         }
     } catch (e) {
         console.error(e);
@@ -23,10 +20,10 @@ async function backend_call<I, O>(name: string, params: I): Promise<O> {
     }
 }
 
-export async function configurator(): Promise<boolean> {
-    return backend_call<{}, boolean>("configurator", {});
-}
-
 export async function sendpacket(): Promise<boolean> {
     return backend_call<{}, boolean>("sendpacket", {});
+}
+
+export async function configurator(): Promise<boolean> {
+    return backend_call<{}, boolean>("configurator", {});
 }

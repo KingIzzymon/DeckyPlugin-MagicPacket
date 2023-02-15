@@ -1,4 +1,4 @@
-# SteamDeckPlugin-MagicPacket
+# Decky Plugin: MagicPacket
 
 MagicPacket is a [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that will wake/sleep a remote computer (aka desktop gaming rig). This is intended for use with Steam's Remote Play and with applications like [Parsec](https://parsec.app/) for in home game streaming.
 
@@ -24,13 +24,13 @@ More connections will be supported via the plugin's settings menu where the user
 
 A server application, provided by [SR-G](https://github.com/SR-G/sleep-on-lan), is required on the remote computer to listen for the wake signal.
 
-1) Copy the "server" folder from your steam deck to your server PC.
+1) Copy and unzip the SleepOnLan server from your steam deck to your server PC.
 
 ```sh
 $HOME/homebrew/plugins/MagicPacket/server
 ```
 
-2) Run "sol.exe" to start the server
+2) Open the subfolder based on your server operating system and run "sol.exe" to start the server
 3) MagicPacket cannot unlock your PC remotely. The easiest solution is to disable password login when you plan on remote play. Just keep in mind that this is a **security risk** since anyone can walk up and access the PC.
 4) (Optional) Create a shortcut to the executable and place it in your startup folder so it runs on startup
 
@@ -43,7 +43,6 @@ $HOME/homebrew/plugins/MagicPacket/server
 ### ToDo
 
 - [ ] Connect the button to launch the bash scripts
-- [ ] Make bashscripts executable during install
 - [ ] Add "hostname" to configurator
 - [ ] Add multi-computer functionality
 
