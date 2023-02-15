@@ -9,24 +9,22 @@ import {
 import { VFC } from "react";
 import { FaWifi } from "react-icons/fa";
 
-import * as backend from "./backend";
-
-const Content: VFC<{ serverAPI: ServerAPI }> = ({}) => {
+const Content: VFC<{ serverAPI: ServerAPI }> = ({ serverAPI }) => {
   return (
     <PanelSection>
       <PanelSectionRow>
         <ButtonItem
           layout="below"
-          onClick={async () => {
-            await backend.sendpacket()
+          onClick={() => {
+            serverAPI!.callPluginMethod("sendpacket", {});
           }}
           >
           Wake / Sleep
         </ButtonItem>
         <ButtonItem
           layout="below"
-          onClick={async () => {
-            await backend.configurator()
+          onClick={() => {
+            serverAPI!.callPluginMethod("configurator", {});
           }}
           >
           Configurator
@@ -37,7 +35,6 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({}) => {
 };
 
 export default definePlugin((serverApi: ServerAPI) => {
-  backend.setServerAPI(serverApi);
   return {
     title: <div className={staticClasses.Title}>MagicPacket</div>,
     content: <Content serverAPI={serverApi} />,

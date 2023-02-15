@@ -24,14 +24,17 @@ subprocess.run("chmod +x *.sh", cwd=PLUGIN_BIN_DIR, shell=True)
 class Plugin:
     # If asleep, then wake. Else iff awake, then sleep
     async def sendpacket(self):
+        logger.debug("Called 'sendpacket'")
         subprocess.run("./sendpacket.sh", shell=True)
     
     # Launch configurator
     async def configurator(self):
+        logger.debug("Called 'configurator'")
         subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
 
     # Update status of server PC in config every 5 seconds
     async def _main(self):
         while(True):
+            logger.debug("Called 'statuscheck'")
             subprocess.run("./statuscheck.sh", cwd=PLUGIN_BIN_DIR, shell=True)
             time.sleep(5)
