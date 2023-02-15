@@ -1,0 +1,18 @@
+{
+    "MagicPacketSettings": {
+        "VERSION": "",
+        "LOGGING_ENABLED": "false",
+        "LOGGING_LEVEL": "INFO",
+        "LOGFILEPATH": ""
+    },
+    "Servers": {
+        "ServerProfile_1": {
+            "HOSTNAME": "",
+            "MAC_ADDRESS_FWD": "",
+            "MAC_ADDRESS_REV": "",
+            "IP_ADDRESS": "",
+            "AUTH_USERNAME": "",
+            "AUTH_PASSWORD": ""
+        }
+    }
+}

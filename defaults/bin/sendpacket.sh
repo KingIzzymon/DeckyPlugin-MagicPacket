@@ -2,22 +2,20 @@
 
 WORKING_DIR="$(dirname "$(realpath "$0")")"
 CONFIG="$WORKING_DIR/config.txt"
-LOG="/tmp/DeckyPlugin-MagicPacket.log"
-ENABLE_LOGGING="true"
 
-source "$WORKING_DIR/config.txt"
+source $CONFIG
 
 wakePC() {
     echo -e $(echo $(printf 'f%.0s' {1..12}; printf "$(echo $MAC_ADDRESS_FWD | sed 's/://g')%.0s" {1..16}) | sed -e 's/../\\x&/g') | socat - UDP-DATAGRAM:255.255.255.255:9,broadcast
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Sent wake packet" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Sent wake packet to $MAC_ADDRESS_FWD" >> "$LOG"
     fi
 }
 
 sleepPC() {
     echo -e $(echo $(printf 'f%.0s' {1..12}; printf "$(echo $MAC_ADDRESS_REV | sed 's/://g')%.0s" {1..16}) | sed -e 's/../\\x&/g') | socat - UDP-DATAGRAM:255.255.255.255:9,broadcast
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Sent sleep packet" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Sent sleep packet to $MAC_ADDRESS_REV" >> "$LOG"
     fi
 }
 

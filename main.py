@@ -31,7 +31,7 @@ class Plugin:
     async def configurator(self):
         logger.debug("Called 'configurator'")
         subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
-        return "[MagicPacket] Test result from configurator"
+        return str("[MagicPacket] Test result from configurator")
 
     async def _main(self):
         while(True):

@@ -3,10 +3,8 @@
 WORKING_DIR="$(dirname "$(realpath "$0")")"
 CONFIG="$WORKING_DIR/config.txt"
 ARP_TEMP="/tmp/arp.txt"
-LOG="/tmp/DeckyPlugin-MagicPacket.log"
-ENABLE_LOGGING="true"
 
-source "$WORKING_DIR/config.txt"
+source $CONFIG
 
 changeSetting() {
     # Usage: changeSetting "VARIABLE=" "VARIABLE=VALUE" "$FILEPATH"

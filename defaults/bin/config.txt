@@ -1,6 +1,6 @@
 # This is the config file for DeckyPlugin - MagicPacket
 
 ENABLE_LOGGING=false
+LOG="/tmp/DeckyPlugin-MagicPacket.log"
 MAC_ADDRESS_FWD=
 MAC_ADDRESS_REV=
-SERVER_IS_RUNNING=

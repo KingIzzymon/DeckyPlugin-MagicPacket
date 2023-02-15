@@ -44,7 +44,7 @@ $HOME/homebrew/plugins/MagicPacket/server
 
 - [ ] Connect the button to launch the bash scripts
 - [ ] Display server IP and MAC under button
-- [ ] Adding "Settings" menu
+- [ ] Add "Settings" menu
 - [ ] Add authentication support for sol
 - [ ] Add "hostname" to configurator
 - [ ] Add multi-computer functionality
@@ -74,6 +74,10 @@ Plugin Stores
 5) The "Console" logs will be in the bottom right corner
 
 Search for "index.js" entries as that will most likely be the Decky plugins
+
+#### Viewing Decky Loader logs
+
+Run `journalctl -eu plugin_loader` in the konsole on the Steam Deck
 
 ---
 
