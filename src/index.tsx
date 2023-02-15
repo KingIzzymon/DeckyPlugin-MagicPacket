@@ -17,6 +17,7 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({ serverAPI }) => {
           layout="below"
           onClick={async () => {
             await serverAPI!.callPluginMethod("sendpacket", {});
+            console.log("[MagicPacket] Called 'sendpacket'");
           }}
           >
           Wake / Sleep
@@ -25,6 +26,9 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({ serverAPI }) => {
           layout="below"
           onClick={async () => {
             await serverAPI!.callPluginMethod("configurator", {});
+            console.log("[MagicPacket] Called 'configurator'");
+            const result = await serverAPI!.callPluginMethod("configurator", {});
+            console.log(result);
           }}
           >
           Configurator

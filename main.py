@@ -26,11 +26,12 @@ logger.debug("Made bash scripts executable")
 class Plugin:
     async def sendpacket(self):
         logger.debug("Called 'sendpacket'")
-        #subprocess.run("./sendpacket.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+        subprocess.run("./sendpacket.sh", cwd=PLUGIN_BIN_DIR, shell=True)
     
     async def configurator(self):
         logger.debug("Called 'configurator'")
-        #subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+        subprocess.run("./configurator.sh", cwd=PLUGIN_BIN_DIR, shell=True)
+        return "[MagicPacket] Test result from configurator"
 
     async def _main(self):
         while(True):

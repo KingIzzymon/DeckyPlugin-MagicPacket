@@ -2,9 +2,9 @@
 
 WORKING_DIR="$(dirname "$(realpath "$0")")"
 CONFIG="$WORKING_DIR/config.txt"
-LOG="$WORKING_DIR/log.txt"
-ARP_TEMP="$WORKING_DIR/arp.txt"
-echo $(date +"%Y-%m-%d-%T") -- "Log(Script): Called 'configurator'" >> "$LOG" #dev
+ARP_TEMP="/tmp/arp.txt"
+LOG="/tmp/DeckyPlugin-MagicPacket.log"
+ENABLE_LOGGING="true"
 
 source "$WORKING_DIR/config.txt"
 
@@ -59,18 +59,13 @@ configurator() {
     changeSetting "MAC_ADDRESS_REV=" "MAC_ADDRESS_REV=$MAC_ADDRESS_REV" "$CONFIG"
     rm "$ARP_TEMP"
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo $(date +"%Y-%m-%d-%T") -- "Log: Configurator set MAC_ADDRESS_FWD: $MAC_ADDRESS" >> "$LOG"
-        echo $(date +"%Y-%m-%d-%T") -- "Log: Configurator set MAC_ADDRESS_REV: $MAC_ADDRESS_REV" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Configurator set MAC_ADDRESS_FWD: $MAC_ADDRESS" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Configurator set MAC_ADDRESS_REV: $MAC_ADDRESS_REV" >> "$LOG"
     fi
 }
 
 ##################
 # Initialization #
 ##################
-if [ "$ENABLE_LOGGING" == "true" ]; then
-    echo $(date +"%Y-%m-%d-%T") -- "Log: Starting configurator" >> "$LOG"
-fi
-configurator
 
-# Source0: https://github.com/scawp/Steam-Deck.Wake-Up-Rig/blob/main/zWakeUpRig.sh
-# Source1: https://stackoverflow.com/questions/31588035/bash-one-line-command-to-send-wake-on-lan-magic-packet-without-specific-tool
+configurator

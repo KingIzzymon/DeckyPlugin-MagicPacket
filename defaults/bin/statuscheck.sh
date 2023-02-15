@@ -1,10 +1,8 @@
 #!/bin/bash
 
 WORKING_DIR="$(dirname "$(realpath "$0")")"
-CONFIG="$WORKING_DIR/config.txt"
-LOG="$WORKING_DIR/log.txt"
-
-source "$WORKING_DIR/config.txt"
+LOG="/tmp/DeckyPlugin-MagicPacket.log"
+ENABLE_LOGGING="true"
 
 changeSetting() {
     # Usage: changeSetting "VARIABLE=" "VARIABLE=VALUE" "$FILEPATH"
@@ -33,25 +31,16 @@ getServerStatus() {
 SERVERSTATUS=""
 getServerStatus
 
-# Check if listening on port 9 and mark as "Server Ready"
-isReady="Readiness Unknown" #todo
-#isReady="SOL is ready"
-
 if [ "$SERVERSTATUS" == "REACHABLE" ]; then
-    changeSetting "SERVER_IS_RUNNING=" "SERVER_IS_RUNNING=true" "$CONFIG"
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Online - $isReady" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Offline" >> "$LOG"
     fi
 elif [ "$SERVERSTATUS" == "STALE" ]; then
-    changeSetting "SERVER_IS_RUNNING=" "SERVER_IS_RUNNING=false" "$CONFIG"
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Offline - $isReady" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Offline" >> "$LOG"
     fi
 else
-    changeSetting "SERVER_IS_RUNNING=" "SERVER_IS_RUNNING=false" "$CONFIG"
     if [ "$ENABLE_LOGGING" == "true" ]; then
-        echo $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Unknown" >> "$LOG"
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Status(Server): PC Unknown" >> "$LOG"
     fi
 fi
-
-# Delete oldest log entry after XX entries #todo
