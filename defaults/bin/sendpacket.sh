@@ -5,6 +5,16 @@ CONFIG="$WORKING_DIR/config.txt"
 
 source $CONFIG
 
+getServerStatus() {
+    # Get status of server
+    while read -r line; do
+        IFS=$" ";column=($line);unset IFS
+        if [ "${column[4]}" == "$MAC_ADDRESS_FWD" ]; then
+            SERVERSTATUS="${column[5]}"
+        fi
+    done <<< "$(ip n)"
+}
+
 wakePC() {
     echo -e $(echo $(printf 'f%.0s' {1..12}; printf "$(echo $MAC_ADDRESS_FWD | sed 's/://g')%.0s" {1..16}) | sed -e 's/../\\x&/g') | socat - UDP-DATAGRAM:255.255.255.255:9,broadcast
     if [ "$ENABLE_LOGGING" == "true" ]; then
@@ -31,11 +41,15 @@ if [ "$MAC_ADDRESS_FWD" == "" ]; then
     bash "$WORKING_DIR/configurator.sh"
 fi
 
+getServerStatus
+
 # If is not running, wake. Else if server is running, sleep.
-if [ "$SERVER_IS_RUNNING" == "false" ]; then
+if [ ! "$SERVERSTATUS" == "REACHABLE" ]; then
     wakePC
-elif [ "$SERVER_IS_RUNNING" == "true" ]; then
+elif [ "$SERVERSTATUS" == "REACHABLE" ]; then
     sleepPC
 else
-    echo "I don't know if the server is running or not."
+    if [ "$ENABLE_LOGGING" == "true" ]; then
+        echo "[MagicPacket-bash]" $(date +"%Y-%m-%d-%T") -- "Log: Can't tell if the server is running or not." >> "$LOG"
+    fi
 fi
