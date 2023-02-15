@@ -15,16 +15,16 @@ const Content: VFC<{ serverAPI: ServerAPI }> = ({ serverAPI }) => {
       <PanelSectionRow>
         <ButtonItem
           layout="below"
-          onClick={() => {
-            serverAPI!.callPluginMethod("sendpacket", {});
+          onClick={async () => {
+            await serverAPI!.callPluginMethod("sendpacket", {});
           }}
           >
           Wake / Sleep
         </ButtonItem>
         <ButtonItem
           layout="below"
-          onClick={() => {
-            serverAPI!.callPluginMethod("configurator", {});
+          onClick={async () => {
+            await serverAPI!.callPluginMethod("configurator", {});
           }}
           >
           Configurator

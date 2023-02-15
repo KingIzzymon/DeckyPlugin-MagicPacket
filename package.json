@@ -1,6 +1,6 @@
 {
   "name": "magicpacket",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "MagicPacket can wake/sleep a remote computer (aka desktop gaming rig). This is intended for use with Steam's Remote Play and with applications like Parsec for in home game streaming.",
   "scripts": {
     "build": "shx rm -rf dist && rollup -c",

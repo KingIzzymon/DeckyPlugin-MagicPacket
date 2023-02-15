@@ -54,6 +54,12 @@ Note: Always search for dev comments (#dev), todo comments (#todo), and work-in-
 - [Template Readme](https://github.com/SteamDeckHomebrew/decky-plugin-template/blob/main/README.md)
 - [Database Readme](https://github.com/SteamDeckHomebrew/decky-plugin-database/blob/main/README.md)
 
+Plugin Stores
+
+- [Official/Stable](https://plugins.deckbrew.xyz/)
+- [Beta](https://beta.deckbrew.xyz/)
+- [Testing](https://testing.deckbrew.xyz/)
+
 ---
 
 Sources:
